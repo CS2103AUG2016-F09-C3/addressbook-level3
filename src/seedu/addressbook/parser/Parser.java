@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static seedu.addressbook.common.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.addressbook.common.Messages.*;
 
 /**
  * Parses user input.
@@ -25,6 +25,14 @@ public class Parser {
                     + " (?<isEmailPrivate>p?)e/(?<email>[^/]+)"
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
+    
+    public static final ArrayList<String> VALID_FIELDS = new ArrayList<String>() {{
+        add("name");
+        add("phone");
+        add("email");
+        add("address");
+        add("");
+    }};
 
 
     /**
@@ -63,7 +71,7 @@ public class Parser {
                 return prepareAdd(arguments);
                 
             case SortCommand.COMMAND_WORD:
-            	return new SortCommand();
+            	return prepareSort(arguments);
 
             case DeleteCommand.COMMAND_WORD:
                 return prepareDelete(arguments);
@@ -124,6 +132,42 @@ public class Parser {
         }
     }
 
+    /**
+     * Parses arguments in the context of the sort command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareSort(String args){
+    	
+    	if (args.length() > 1){
+    	    args = args.substring(1);
+    	}else{
+    		args = "name";
+    	}
+    	
+    	if(!isValid(args)){
+    		return new IncorrectCommand(String.format(MESSAGE_INVALID_FIELD, SortCommand.MESSAGE_USAGE));
+    	}
+    	try {
+			return new SortCommand(args);
+		} catch (IllegalValueException ive) {
+			return new IncorrectCommand(ive.getMessage());
+		}
+    }
+    
+    private boolean isValid(String str){
+
+    	for(String field : VALID_FIELDS){
+    		if(str.equals(field)){
+    			return true;
+    		}
+    	}
+    	
+    	return false;
+    }
+        
+    
     /**
      * Checks whether the private prefix of a contact detail in the add command's arguments string is present.
      */

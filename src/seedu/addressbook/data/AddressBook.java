@@ -134,8 +134,8 @@ public class AddressBook {
     /**
      * Sorts the list by name.
      */
-    public void sort() {
-    	allPersons.sort();
+    public void sort(String field) {
+    	allPersons.sort(field);
     	
     }
     
