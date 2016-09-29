@@ -93,6 +93,14 @@ public class UniquePersonList implements Iterable<Person> {
         }
         internalList.add(toAdd);
     }
+    
+    /**
+     * Sorts the list by name.
+     *
+     */
+    public void sort() {
+        Collections.sort(internalList);
+    }
 
     /**
      * Removes the equivalent person from the list.
