@@ -131,4 +131,8 @@ public class UniquePersonList implements Iterable<Person> {
         return internalList.hashCode();
     }
 
+    public Object getList() {
+        return internalList;
+    }
+
 }
