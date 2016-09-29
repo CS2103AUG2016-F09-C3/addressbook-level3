@@ -90,6 +90,9 @@ public class Parser {
             case ViewAllCommand.COMMAND_WORD:
                 return prepareViewAll(arguments);
 
+            case ViewAllTags.COMMAND_WORD:
+                return new ViewAllTags();
+
             case ExitCommand.COMMAND_WORD:
                 return new ExitCommand();
 
@@ -98,6 +101,7 @@ public class Parser {
                 return new HelpCommand();
         }
     }
+
 
     /**
      * Parses arguments in the context of the edit person command.
