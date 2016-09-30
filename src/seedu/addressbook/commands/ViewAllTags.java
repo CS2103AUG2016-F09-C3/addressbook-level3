@@ -27,4 +27,9 @@ public class ViewAllTags extends Command{
         }
         return builder.toString();
     }
+
+    @Override
+    public boolean isMutating() {
+        return true;
+    }
 }
