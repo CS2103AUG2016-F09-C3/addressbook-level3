@@ -44,4 +44,9 @@ public class SortCommand extends Command{
         
         return new CommandResult(MESSAGE_SUCCESS + " by " + field + "!");
     }
+    
+    @Override 
+    public boolean isMutating(){ 
+        return true; 
+    }
 }
