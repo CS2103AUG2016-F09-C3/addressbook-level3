@@ -71,4 +71,9 @@ public class EditCommand extends Command {
         person.setAddress(toEdit.getAddress());
         person.setTags(toEdit.getTags());
     }
+    
+    @Override 
+    public boolean isMutating(){ 
+        return true; 
+    }
 }
