@@ -93,6 +93,25 @@ public class UniquePersonList implements Iterable<Person> {
         }
         internalList.add(toAdd);
     }
+    
+    /**
+     * Sorts the list by given field.
+     *
+     * @param field field for the address book to be sorted by
+     */
+    public void sort(String field) {
+    	
+    	switch (field){
+    		case "name":
+    			Collections.sort(internalList, Person.Comparators.NAME); break;
+    		case "phone":
+    			Collections.sort(internalList, Person.Comparators.PHONE); break;
+    		case "email":
+    			Collections.sort(internalList, Person.Comparators.EMAIL); break;
+    		case "address":
+    			Collections.sort(internalList, Person.Comparators.ADDRESS); break;
+    	}
+    }
 
     /**
      * Removes the equivalent person from the list.

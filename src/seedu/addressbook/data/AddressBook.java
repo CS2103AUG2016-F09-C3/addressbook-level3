@@ -132,6 +132,14 @@ public class AddressBook {
     }
 
     /**
+     * Sorts the list by name.
+     */
+    public void sort(String field) {
+    	allPersons.sort(field);
+    	
+    }
+    
+    /**
      * Defensively copied UniquePersonList of all persons in the address book at the time of the call.
      */
     public UniquePersonList getAllPersons() {
